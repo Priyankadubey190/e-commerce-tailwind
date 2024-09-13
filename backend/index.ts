@@ -1,14 +1,11 @@
+import * as dotenv from "dotenv";
 import express from "express";
-import userRoute from "./routes/user.route.js";
 import path from "path";
-import dotenv from "dotenv";
-import { connectionDB } from "./utils/features.js";
+dotenv.config({ path: path.join(__dirname, "./.env") });
+import userRoute from "./src/routes/user.route";
+import { connectionDB } from "./src/utils/features";
 const app = express();
 app.use(express.json());
-
-dotenv.config({ path: "./.env" });
-// Construct the absolute path to your .env file
-// dotenv.config({ path: path.resolve(__dirname, "./.env") });
 
 console.log("Loaded PORT:", process.env.PORT);
 
@@ -19,7 +16,7 @@ app.use("/api/user", userRoute);
 
 app.listen(port, async () => {
   try {
-    // await connectionDB;
+    await connectionDB;
     console.log(`server is running on port ${port}`);
   } catch (e) {
     console.log(e);

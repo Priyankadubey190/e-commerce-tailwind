@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "../models/user.modal.js";
-import { NewUserRequestBody } from "../types/types.js";
+import { User } from "../models/user.modal";
+import { NewUserRequestBody } from "../types/types";
 
 export const newUser = async (
   req: Request<{}, {}, NewUserRequestBody>,

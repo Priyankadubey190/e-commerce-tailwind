@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const mongoUrl = process.env.mongo_url;
+
+console.log("mongoUrl", mongoUrl);
 
 if (!mongoUrl) {
   throw new Error(
